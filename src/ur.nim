@@ -12,6 +12,15 @@ import
 #    of positive/negative result; or of distribution.
 #    It is a treshhold of log priority.
 #
+#  lvlAll,                     ## all levels active
+#  lvlDebug,                   ## debug level (and any above) active
+#  lvlInfo,                    ## info level (and any above) active
+#  lvlNotice,                  ## info notice (and any above) active
+#  lvlWarn,                    ## warn level (and any above) active
+#  lvlError,                   ## error level (and any above) active
+#  lvlFatal,                   ## fatal level (and any above) active
+#  lvlNone        
+
 export Level
 
 # DisplayClasses are based, somewhat, on Bootstrap CSS
@@ -99,8 +108,19 @@ method has_value*(ur: UR_universal): bool =
 #
 # ######################################
 
-method set_success*(ur: var UR_universal, msg: string, level=lvlNotice, class=success, aud = user): void =
-  echo "here"
+method set_success*(ur: UR_universal, msg: string, level=lvlNotice, class=success, aud = user): void =
+  ur.msg = msg
+  ur.level = level
+  ur.class = class
+  ur.aud = aud
+
+method set_expected_success*(ur: UR_universal, msg: string, level=lvlDebug, class=success, aud = user): void =
+  ur.msg = msg
+  ur.level = level
+  ur.class = class
+  ur.aud = aud
+
+method set_expected_error*(ur: UR_universal, msg: string, level=lvlDebug, class=danger, aud = user): void =
   ur.msg = msg
   ur.level = level
   ur.class = class
