@@ -313,6 +313,6 @@ NOTE: the `setURLLogFormat` procedure also works with the simpler `wrap_UR`. The
 
 Additional references and articles:
 
-* [module documentation: ur](https://raw.githubusercontent.com/JohnAD/ur/master/ur.html)
-* [module documentation: urpkg.log](https://raw.githubusercontent.com/JohnAD/ur/master/ur.html)
+* [module documentation: ur](ur.html)
+* [module documentation: urpkg.log](ur.html)
 
