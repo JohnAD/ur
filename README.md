@@ -11,11 +11,11 @@ two-fold:
 
 | Table of Contents |
 |:----------------- |
-| [A Simple Example](#asimpleexample) |
-| [Library Example](#libraryexample) |
-| [The UR Object](#theurobject) |
-| [Bonus: Adding Detail](#bonusaddingdetail) |
-| [More Information](#moreinformation) |
+| [A Simple Example](#a-simple-example) |
+| [Library Example](#library-example) |
+| [The UR Object](#the-ur-object) |
+| [Bonus: Adding Detail](#bonus-adding-detail) |
+| [More Information](#more-information) |
 
 
 ## A Simple Example
@@ -158,7 +158,7 @@ All filtering for `sendLog` is done by `logging`; and that library strictly look
 
 ## The UR Object
 
-UR is about about automatically generate UR_*<object>* objects. The objects are defined internally as:
+UR is about about automatically generate UR_*object* objects. The objects are defined internally as:
 
 ```nim
 type
@@ -308,3 +308,11 @@ D, [2018-06-29T12:34:42] -- app: [success] [project abc] x incremented by 1.0
 ```
 
 NOTE: the `setURLLogFormat` procedure also works with the simpler `wrap_UR`. The `detail` table will simply be empty.
+
+## More Information
+
+Additional references and articles:
+
+* [module documentation: ur](https://raw.githubusercontent.com/JohnAD/ur/master/ur.html)
+* [module documentation: urpkg.log](https://raw.githubusercontent.com/JohnAD/ur/master/ur.html)
+
