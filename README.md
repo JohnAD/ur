@@ -28,12 +28,11 @@ wrap_UR(Vector)
 
 ```
 
-The `wrap_UR` macro applies a large number of methods to the `Vector` tuple. And it creates a
-`UR_Vector` object for the UR function.
+The `wrap_UR` macro creates a `UR_Vector` object with large set of useful methods.
 
-(Don't worry, with conditional compiling, Nim should later remove the ones you don't use.)
+(Don't worry, with conditional compiling, Nim should later remove the methods you don't use.)
 
-Now, we use it for returning a flexible result:
+Now, we use the new object for returning a flexible result:
 
 ```nim
 import ur
@@ -130,7 +129,7 @@ Each event has a message and three very distinct attributes.
 
 ### level
 
-The level is the degree of distribution for the message.
+The `level` is the degree of distribution for the message.
 
 It answers the question: *How Important is This?*
 
@@ -145,7 +144,7 @@ The available levels:
 * `lvlFatal`
 * `lvlNone`
 
-The level definitions are set by the `logger` library that is part of Nim's standard level. See: X
+The `level` definitions are set by the `logging` standard library that is part of Nim. See: https://nim-lang.org/docs/logging.html
 
 NOTE: the names of the levels are somewhat misleading. Using a level of `lvlError` does NOT mean that an error has occured. It means *"if I'm filtering a log for mostly errors, this message should show up in that log"*.
 
@@ -153,7 +152,7 @@ For judging the character of the event, use the `class`.
 
 ### class
 
-The class is the judgement of the event.
+The `class` is the judgement of the event.
 
 it answers the question: *Is this a good or bad event?*
 
@@ -164,27 +163,27 @@ Only four classes are possible:
 * `warning` - everything worked, but something is suspicious
 * `danger` - failure/error/bug
 
-The class definitions are from the Boostrap CSS project. See: https://getbootstrap.com
+The `class` definitions are from the Boostrap CSS project. See: https://getbootstrap.com
 
 ### audience
 
-The audience is, not surpisingly, the intended audience for any message about the event.
+The `audience` is, not surpisingly, the intended audience for any message about the event.
 
-In a traditional 'logger' or SYSLOG system, the intended audience is strictly `ops`. This system allows the further levels; useful when UR is integrated with web apps or other development frameworks.
+In a traditional 'logger' or SYSLOG system, the intended audience is strictly `ops`. UR allows for further targets; useful when UR is integrated with web apps or other development frameworks.
 
 It answers the question: *Who is permitted to see This?*
 
 The possible audiences are:
 
-* `ops` - IT, Developers, system software
+* `ops` - IT staff, developers, software agents
 * `admin` - users with admin clearance
 * `user` - regular end users / registered members
 * `public` - the whole world (no restrictions)
 
-Each audience permission is more restrictive than the previous. So, `ops` can see all events. But `admin` can only see 'admin', 'user' and 'public events. And so on.
+Each audience permission is more restrictive than the previous. So, `ops` can see all events. But `admin` can only see `admin`, `user` and `public` events. And so on.
 
 ### Combining the attributes together.
 
 The attributes are meant to be combined when making decisions.
 
-For example, an event with a audience of 'user' but a level of 'lvlDebug' probably won't be shown to the user. Essentially, they have permission to see the message, but won't because harrasing an end-user with debug messages is not a friendly thing to do.
+For example, an event with an `audience` of `user` but a `level` of `lvlDebug` probably won't be shown to the end user. Essentially, they have permission to see the message, but won't because harrasing an end user with debug messages is not a friendly thing to do.
