@@ -12,7 +12,7 @@ proc default_format(event: UREvent, detail: Table[string, string]): string =
 
 
 var
-  UR_universal_log_formatter* = default_format
+  UR_universal_log_formatter = default_format
 
 proc setURLogFormat*(formatting_procedure: proc) =
   ## Have the supplied procedure formated the string used by sendLog
