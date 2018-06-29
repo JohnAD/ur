@@ -103,7 +103,49 @@ Internally, UR has one library already integrated: logger.
 
 For example:
 
-xx TODO
+```nim
+import
+  strutils,
+  logging
+
+import
+  ur,
+  urpkg.log
+
+
+var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
+addHandler(L)
+
+
+type
+  Vector = tuple[x: float, y: float]
+
+
+wrap_UR(Vector)
+
+proc example(v: Vector): UR_Vector:
+  result = newUR_Vector()
+  result.value = v
+  result.value.x = result.value.x + 1.0
+  result.set_expected_success("x incremented by 1.0")
+
+var a = Vector(x: 9.3, y: 3.0)
+
+var response = a.example()
+
+echo "message: $1, x: $2".format(response.msg, response.value.x)
+
+response.sendLog()  # this sends the event(s) to logging
+
+```
+
+Now "test.log" will have an entry similar to this:
+
+```log
+D, [2018-06-29T12:34:42] -- app: success; user; x incremented by 1.0
+```
+
+All filtering for `sendLog` is done by `logging`; and that library strictly looks at the `level` attribute.
 
 ## the UR Object in Detail:
 
@@ -187,3 +229,73 @@ Each audience permission is more restrictive than the previous. So, `ops` can se
 The attributes are meant to be combined when making decisions.
 
 For example, an event with an `audience` of `user` but a `level` of `lvlDebug` probably won't be shown to the end user. Essentially, they have permission to see the message, but won't because harrasing an end user with debug messages is not a friendly thing to do.
+
+## Bonus: adding detail
+
+There is also wrapper called `wrap_UR_detail` that adds a table of strings to a UR called `detail`. The purpose of this is to allow more sophisticated logging and handling of events. Of course, adding such support also increases the overhead of UR; so please take that into consideration.
+
+Building on the earlier example for logging:
+
+```nim
+import
+  strutils,
+  logging
+
+import
+  ur,
+  urpkg.log
+
+var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
+addHandler(L)
+
+
+type
+  Vector = tuple[x: float, y: float]
+
+
+wrap_UR_detail(Vector)
+
+proc example(v: Vector, category: string): UR_Vector:
+  result = newUR_Vector()
+  result.value = v
+  result.value.x = result.value.x + 1.0
+  result.set_expected_success("x incremented by 1.0")
+  result.detail["category"] = category
+
+var a = Vector(x: 9.3, y: 3.0)
+
+var response = a.example("project abc")
+
+echo "message: $1, category: $2".format(response.msg, response.detail["category"])
+
+```
+
+To use the detail in the context of `urpkg.log`, there is a procedure called `setURLogFormat`. It is expecting a pointer to a procedure. That procedure *must* have the following parameters:
+
+```nim
+(event: UREvent, detail: Table[string, string]): string
+```
+
+So, for example:
+
+```nim
+var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
+addHandler(L)
+
+proc my_example_format(event: UREvent, detail: Table[string, string]): string =
+  var category = "unknown"
+  if detail.hasKey("category"):
+    category = detail["category"]
+  result = "[$1] [$2] $3".format(event.class, category, event.msg)
+
+setURLogFormat(my_example_format)
+
+```
+
+Now, the entry in "test.log" will look like:
+
+```log
+D, [2018-06-29T12:34:42] -- app: [success] [project abc] x incremented by 1.0
+```
+
+NOTE: the `setURLLogFormat` procedure also works with the simpler `wrap_UR`. The `detail` table will simply be empty.

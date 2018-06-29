@@ -4,7 +4,8 @@
 import
   macros,
   logging,
-  strutils
+  strutils,
+  tables
 
 
 # 'Level'
@@ -61,6 +62,7 @@ type
   UR_universal* = ref object of RootObj
     value_type*: string
     events*: seq[URevent]
+    detail*: Table[string, string]    # dormant nil unless macro_UR_detail is used
 
 
 proc newURevent(): URevent =
@@ -68,14 +70,14 @@ proc newURevent(): URevent =
   result.msg = ""
 
 
-proc create_UR_string*(val_type: string): string {.compileTime.} =
+proc create_UR_string*(val_type: string, use_detail: bool): string {.compileTime.} =
   ## create the macro string. can be called by external macros.
   result = ""
   result.add("type\n")
   result.add("  UR_$1* = ref object of UR_universal\n".format(val_type))
   result.add("    value*: $1\n".format(val_type))
   result.add("\n")
-  result.add("proc has_value(self: UR_$1): bool =\n".format(val_type))
+  result.add("proc has_value(self: UR_$1): bool {.used.} =\n".format(val_type))
   result.add("  if len(self.events) == 0:\n")
   result.add("    return false\n")
   result.add("  else:\n")
@@ -98,6 +100,8 @@ proc create_UR_string*(val_type: string): string {.compileTime.} =
   result.add("  result = UR_$1()\n".format(val_type))
   result.add("  result.value_type = \"$1\"\n".format(val_type))
   result.add("  result.events = @[]\n")
+  if use_detail:
+    result.add("  result.detail = initTable[string, string]()\n")
   result.add("\n")
 
 
@@ -108,7 +112,21 @@ macro wrap_UR*(n: typed): typed =
   #
   # define the object type
   #
-  s.add(create_UR_string(val_type))
+  s.add(create_UR_string(val_type, false))
+  #
+  # generate code
+  #
+  parseStmt s
+
+
+macro wrap_UR_detail*(n: typed): typed =
+  var s: string = ""
+  #echo treeRepr n
+  let val_type = $n
+  #
+  # define the object type
+  #
+  s.add(create_UR_string(val_type, true))
   #
   # generate code
   #
