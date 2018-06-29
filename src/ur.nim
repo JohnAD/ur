@@ -55,13 +55,13 @@ type
 
 type
   URevent* = ref object of RootObj
-    ## The details of a single event
+    ## The details of a single event.
     msg*: string                      # defaults to ""
     level*: Level                     # defaults to lvlAll
     class*: DisplayClass              # defaults to info
     audience*: Audience    # defaults to ops
   UR_universal* = ref object of RootObj
-    ## This is the parent object that all ``UR_<type>`` objects inherit
+    ## This is the parent object that all ``UR_<type>`` objects inherit.
     ## 
     ## NOTE: while the ``detail`` property is on all ``UR_<type>`` object, the
     ## reference is ``nil`` if ``wrap_UR`` is used rather than ``wrap_UR_detail``.
