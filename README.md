@@ -9,6 +9,15 @@ two-fold:
 1. Make it easy (and predictable) to create such "dynamic" returns.
 2. Make it possible to integrate such a system with other libraries.
 
+| Table of Contents |
+|:----------------- |
+| [A Simple Example](#asimpleexample) |
+| [Library Example](#libraryexample) |
+| [The UR Object](#theurobject) |
+| [Bonus: Adding Detail](#bonusaddingdetail) |
+| [More Information](#moreinformation) |
+
+
 ## A Simple Example
 
 The following is a very simple example of UR.
@@ -97,9 +106,9 @@ if response.has_warnings:
 
 ```
 
-## An example of integration with another library
+## Library Example
 
-Internally, UR has one library already integrated: logger.
+Internally, UR has one library already integrated: Nim's standard `logging` module. You can use it by importing 'urpkg.log'.
 
 For example:
 
@@ -147,9 +156,9 @@ D, [2018-06-29T12:34:42] -- app: success; user; x incremented by 1.0
 
 All filtering for `sendLog` is done by `logging`; and that library strictly looks at the `level` attribute.
 
-## the UR Object in Detail:
+## The UR Object
 
-The object is defined internally as:
+UR is about about automatically generate UR_*<object>* objects. The objects are defined internally as:
 
 ```nim
 type
@@ -230,7 +239,7 @@ The attributes are meant to be combined when making decisions.
 
 For example, an event with an `audience` of `user` but a `level` of `lvlDebug` probably won't be shown to the end user. Essentially, they have permission to see the message, but won't because harrasing an end user with debug messages is not a friendly thing to do.
 
-## Bonus: adding detail
+## Bonus: Adding Detail
 
 There is also wrapper called `wrap_UR_detail` that adds a table of strings to a UR called `detail`. The purpose of this is to allow more sophisticated logging and handling of events. Of course, adding such support also increases the overhead of UR; so please take that into consideration.
 
