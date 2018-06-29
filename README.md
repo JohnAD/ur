@@ -158,7 +158,7 @@ All filtering for `sendLog` is done by `logging`; and that library strictly look
 
 ## The UR Object
 
-UR is about about automatically generate UR_*object* objects. The objects are defined internally as:
+UR is all about the automatically generate UR_*object* objects. The objects are defined internally as:
 
 ```nim
 type
