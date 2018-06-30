@@ -23,6 +23,8 @@ import
 #  lvlFatal,                   ## fatal level (and any above) active
 #  lvlNone        
 
+## UR: Universal Return objects
+
 export Level
 
 # DisplayClasses are based, somewhat, on Bootstrap CSS
@@ -172,7 +174,7 @@ method has_value*(ur: UR_universal): bool =
   false # defaults to false until an override has been made
 
 
-method level*(ur: UR_universal): Level =
+method last_level*(ur: UR_universal): Level =
   ## Gets the last event's logging level
   if len(ur.events) == 0:
     result = lvlAll
@@ -180,13 +182,13 @@ method level*(ur: UR_universal): Level =
     result = ur.events[^1].level
 
 
-method `level=`*(ur: UR_universal, level: Level) =
+method `last_level=`*(ur: UR_universal, level: Level) =
   ## Sets the last event's level
   ## only works if an event has been created already; otherwise you will see a KeyError
   ur.events[^1].level = level
 
 
-method class*(ur: UR_universal): DisplayClass =
+method last_class*(ur: UR_universal): DisplayClass =
   ## Gets the last event's display class
   if len(ur.events) == 0:
     result = info
@@ -194,13 +196,13 @@ method class*(ur: UR_universal): DisplayClass =
     result = ur.events[^1].class
 
 
-method `class=`*(ur: UR_universal, class: DisplayClass) =
+method `last_class=`*(ur: UR_universal, class: DisplayClass) =
   ## Sets the last event's class
   ## only works if an event has been created already; otherwise you will see a KeyError
   ur.events[^1].class = class
 
 
-method audience*(ur: UR_universal): Audience =
+method last_audience*(ur: UR_universal): Audience =
   ## Gets the last event's audience
   if len(ur.events) == 0:
     result = ops
@@ -208,13 +210,13 @@ method audience*(ur: UR_universal): Audience =
     result = ur.events[^1].audience
 
 
-method `audience=`*(ur: UR_universal, audience: Audience) =
+method `last_audience=`*(ur: UR_universal, audience: Audience) =
   ## Sets the last event's audience
   ## Only works if an event has been created already; otherwise you will see a KeyError
   ur.events[^1].audience = audience
 
 
-method msg*(ur: UR_universal): string =
+method last_msg*(ur: UR_universal): string =
   ## Gets the last event's msg
   if len(ur.events) == 0:
     result = ""
@@ -222,10 +224,87 @@ method msg*(ur: UR_universal): string =
     result = ur.events[^1].msg
 
 
-method `msg=`*(ur: UR_universal, msg: string) =
+
+method `last_msg=`*(ur: UR_universal, msg: string) =
   ## Sets the last event's msg
   ## Only works if an event has been created already; otherwise you will see a KeyError
   ur.events[^1].msg = msg
+
+
+
+method has_info*(ur: UR_universal): bool =
+  ## Returns true if there are any events with the ``info`` class
+  result = false
+  for event in ur.events:
+    if event.class == info:
+      result = true
+      break
+
+
+method has_success*(ur: UR_universal): bool =
+  ## Returns true if there are any events with the ``success`` class
+  result = false
+  for event in ur.events:
+    if event.class == success:
+      result = true
+      break
+
+
+method has_warning*(ur: UR_universal): bool =
+  ## Returns true if there are any events with the ``warning`` class
+  result = false
+  for event in ur.events:
+    if event.class == warning:
+      result = true
+      break
+
+
+method has_danger*(ur: UR_universal): bool =
+  ## Returns true if there are any events with the ``danger`` class
+  result = false
+  for event in ur.events:
+    if event.class == danger:
+      result = true
+      break
+
+
+method info_msgs*(ur: UR_universal): seq[string] = 
+  ## Returns a sequence of messsages marked with a class of ``info``
+  result = @[]
+  for event in ur.events:
+    if event.class == info:
+      result.add(event.msg)
+
+
+method success_msgs*(ur: UR_universal): seq[string] = 
+  ## Returns a sequence of messsages marked with a class of ``success``
+  result = @[]
+  for event in ur.events:
+    if event.class == success:
+      result.add(event.msg)
+
+
+method warning_msgs*(ur: UR_universal): seq[string] = 
+  ## Returns a sequence of messsages marked with a class of ``warning``
+  result = @[]
+  for event in ur.events:
+    if event.class == warning:
+      result.add(event.msg)
+
+
+method danger_msgs*(ur: UR_universal): seq[string] = 
+  ## Returns a sequence of messsages marked with a class of ``danger``
+  result = @[]
+  for event in ur.events:
+    if event.class == danger:
+      result.add(event.msg)
+
+
+method all_msgs*(ur: UR_universal): seq[string] = 
+  ## Returns all the messsages
+  result = @[]
+  for event in ur.events:
+    result.add(event.msg)
 
 
 method `$`*(ur: UR_universal): string =
@@ -233,6 +312,7 @@ method `$`*(ur: UR_universal): string =
   result = "UR events:"
   for event in ur.events:
     result.add("  (class: $1, msg: $2)\n".format($event.class, event.msg))
+
 
 # ######################################
 #

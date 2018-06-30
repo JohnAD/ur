@@ -106,7 +106,7 @@ Now, we use the new object for returning a flexible result:
     if response.ok:
       echo "my new x is " & $response.value.x
     if response.has_warnings:
-      echo "my warnings are " & $response.warnings
+      echo "my warnings are " & $response.warning_msgs
 
     # should display:
     #
