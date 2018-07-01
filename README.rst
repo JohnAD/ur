@@ -1,40 +1,149 @@
-ur
-==
+.. raw:: html
 
-Nim Universal Return system
----------------------------
+   <div id="documentId" class="document">
+
+.. raw:: html
+
+   <div class="container">
+
+.. raw:: html
+
+   <div class="row">
+
+.. raw:: html
+
+   <div class="three columns">
+
+.. raw:: html
+
+   <div id="global-links">
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div id="searchInput">
+
+Search:
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div>
+
+Group by: Section Type
+
+.. raw:: html
+
+   </div>
+
+`A Simple Example <#a-simple-example>`__
+`Library Example <#library-example>`__
+`The UR Object <#the-ur-object>`__
+
+-  `level <#the-ur-object-level>`__
+-  `class <#the-ur-object-class>`__
+-  `audience <#the-ur-object-audience>`__
+-  `Combining the attributes
+   together. <#the-ur-object-combining-the-attributes-together>`__
+
+`Bonus: Adding Detail <#bonus-adding-detail>`__
+`More Information <#more-information>`__
+`Imports <#6>`__
+
+`Types <#7>`__
+
+-  `DisplayClass <#DisplayClass>`__
+-  `Audience <#Audience>`__
+-  `URevent <#URevent>`__
+-  `UR\_universal <#UR_universal>`__
+
+`Methods <#14>`__
+
+-  `okUR\_universal <#ok.e,UR_universal>`__
+-  `has\_valueUR\_universal <#has_value.e,UR_universal>`__
+-  `last\_levelUR\_universal <#last_level.e,UR_universal>`__
+-  `last\_level=UR\_universal <#last_level=.e,UR_universal,Level>`__
+-  `last\_classUR\_universal <#last_class.e,UR_universal>`__
+-  `last\_class=UR\_universal <#last_class=.e,UR_universal,DisplayClass>`__
+-  `last\_audienceUR\_universal <#last_audience.e,UR_universal>`__
+-  `last\_audience=UR\_universal <#last_audience=.e,UR_universal,Audience>`__
+-  `last\_msgUR\_universal <#last_msg.e,UR_universal>`__
+-  `last\_msg=UR\_universal <#last_msg=.e,UR_universal,string>`__
+-  `has\_infoUR\_universal <#has_info.e,UR_universal>`__
+-  `has\_successUR\_universal <#has_success.e,UR_universal>`__
+-  `has\_warningUR\_universal <#has_warning.e,UR_universal>`__
+-  `has\_dangerUR\_universal <#has_danger.e,UR_universal>`__
+-  `info\_msgsUR\_universal <#info_msgs.e,UR_universal>`__
+-  `success\_msgsUR\_universal <#success_msgs.e,UR_universal>`__
+-  `warning\_msgsUR\_universal <#warning_msgs.e,UR_universal>`__
+-  `danger\_msgsUR\_universal <#danger_msgs.e,UR_universal>`__
+-  `all\_msgsUR\_universal <#all_msgs.e,UR_universal>`__
+-  `\`$\`UR\_universal <#$.e,UR_universal>`__
+-  `set\_successUR\_universal <#set_success.e,UR_universal,string>`__
+-  `set\_expected\_successUR\_universal <#set_expected_success.e,UR_universal,string>`__
+-  `set\_failureUR\_universal <#set_failure.e,UR_universal,string>`__
+-  `set\_expected\_failureUR\_universal <#set_expected_failure.e,UR_universal,string>`__
+-  `set\_internal\_bugUR\_universal <#set_internal_bug.e,UR_universal,string>`__
+-  `set\_critical\_internal\_bugUR\_universal <#set_critical_internal_bug.e,UR_universal,string>`__
+-  `set\_note\_to\_publicUR\_universal <#set_note_to_public.e,UR_universal,string>`__
+-  `set\_note\_to\_userUR\_universal <#set_note_to_user.e,UR_universal,string>`__
+-  `set\_note\_to\_adminUR\_universal <#set_note_to_admin.e,UR_universal,string>`__
+-  `set\_note\_to\_opsUR\_universal <#set_note_to_ops.e,UR_universal,string>`__
+-  `set\_warningUR\_universal <#set_warning.e,UR_universal,string>`__
+-  `set\_debugUR\_universal <#set_debug.e,UR_universal,string>`__
+
+`Macros <#17>`__
+
+-  `wrap\_UR <#wrap_UR.m,typed>`__
+-  `wrap\_UR\_detail <#wrap_UR_detail.m,typed>`__
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div id="content" class="nine columns">
+
+.. raw:: html
+
+   <div id="tocRoot">
+
+.. raw:: html
+
+   </div>
 
 A Universal Return (UR) is an object that allows the programmer to
 return either a value or a sequence of messages (or both) from a
 procedure. This could, of course, be done by hand using tuple or other
 options, but the goal of this package is two-fold:
 
-1. Make it easy (and predictable) to create such "dynamic" returns.
-2. Make it possible to integrate such a system with other libraries.
+#. Make it easy (and predictable) to create such "dynamic" returns.
+#. Make it possible to integrate such a system with other libraries.
 
-+---------------------------------------------------+
-| Table of Contents                                 |
-+===================================================+
-| `A Simple Example <#a-simple-example>`__          |
-+---------------------------------------------------+
-| `Library Example <#library-example>`__            |
-+---------------------------------------------------+
-| `The UR Object <#the-ur-object>`__                |
-+---------------------------------------------------+
-| `Bonus: Adding Detail <#bonus-adding-detail>`__   |
-+---------------------------------------------------+
-| `More Information <#more-information>`__          |
-+---------------------------------------------------+
+**Table of Contents**
 
-A Simple Example
-----------------
+-  `A Simple Example <#a-simple-example>`__
+-  `Library Example <#library-example>`__
+-  `The UR Object <#the-ur-object>`__
+-  `Bonus: Adding Detail <#bonus-adding-detail>`__
+-  `More Information <#more-information>`__
+
+.. rubric:: `A Simple Example <#a-simple-example>`__
+   :name: a-simple-example
 
 The following is a very simple example of UR.
 
 First, we are going to import the library and "wrap" the type of element
 we want to return.
 
-.. code:: nim
+.. code:: listing
 
     import ur
 
@@ -53,7 +162,7 @@ methods you don't use.)
 
 Now, we use the new object for returning a flexible result:
 
-.. code:: nim
+.. code:: listing
 
     import ur
 
@@ -106,7 +215,7 @@ Now, we use the new object for returning a flexible result:
     if response.ok:
       echo "my new x is " & $response.value.x
     if response.has_warnings:
-      echo "my warnings are " & $response.warning_msgs
+      echo "my warnings are " & $response.warnings
 
     # should display:
     #
@@ -114,15 +223,15 @@ Now, we use the new object for returning a flexible result:
 
     #
 
-Library Example
----------------
+.. rubric:: `Library Example <#library-example>`__
+   :name: library-example
 
 Internally, UR has one library already integrated: Nim's standard
-``logging`` module. You can use it by importing 'ur/log'.
+``logging`` module. You can use it by importing 'urpkg.log'.
 
 For example:
 
-.. code:: nim
+.. code:: listing
 
     import
       strutils,
@@ -130,7 +239,7 @@ For example:
 
     import
       ur,
-      ur/log
+      urpkg.log
 
 
     var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
@@ -154,34 +263,34 @@ For example:
     var response = a.example()
 
     echo "message: $1, x: $2".format(response.msg, response.value.x)
-    
+
     response.sendLog()  # this sends the event(s) to logging
 
 Now "test.log" will have an entry similar to this:
 
-.. code:: log
+.. code:: listing
 
     D, [2018-06-29T12:34:42] -- app: success; user; x incremented by 1.0
 
 All filtering for ``sendLog`` is done by ``logging``; and that library
 strictly looks at the ``level`` attribute.
 
-The UR Object
--------------
+.. rubric:: `The UR Object <#the-ur-object>`__
+   :name: the-ur-object
 
 UR is all about the automatically generate UR\_\ *object* objects. The
 objects are defined internally as:
 
-.. code:: nim
+.. code:: listing
 
     type
-
+      
       URevent*
-        msg*: string                     
-        level*: Level                    
-        class*: DisplayClass             
-        audience*: Audience 
-
+        msg*: string
+        level*: Level
+        class*: DisplayClass
+        audience*: Audience
+      
       UR_<type>
         events*: seq[URevent]
         value*: <type>
@@ -191,8 +300,8 @@ being returned.
 
 Each event has a message and three very distinct attributes.
 
-level
-~~~~~
+.. rubric:: `level <#the-ur-object-level>`__
+   :name: level
 
 The ``level`` is the degree of distribution for the message.
 
@@ -219,8 +328,8 @@ log"*.
 
 For judging the character of the event, use the ``class``.
 
-class
-~~~~~
+.. rubric:: `class <#the-ur-object-class>`__
+   :name: class
 
 The ``class`` is the judgement of the event.
 
@@ -236,8 +345,8 @@ Only four classes are possible:
 The ``class`` definitions are from the Boostrap CSS project. See:
 https://getbootstrap.com
 
-audience
-~~~~~~~~
+.. rubric:: `audience <#the-ur-object-audience>`__
+   :name: audience
 
 The ``audience`` is, not surpisingly, the intended audience for any
 message about the event.
@@ -259,8 +368,9 @@ Each audience permission is more restrictive than the previous. So,
 ``ops`` can see all events. But ``admin`` can only see ``admin``,
 ``user`` and ``public`` events. And so on.
 
-Combining the attributes together.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. rubric:: `Combining the attributes
+   together. <#the-ur-object-combining-the-attributes-together>`__
+   :name: combining-the-attributes-together.
 
 The attributes are meant to be combined when making decisions.
 
@@ -269,8 +379,8 @@ of ``lvlDebug`` probably won't be shown to the end user. Essentially,
 they have permission to see the message, but won't because harrasing an
 end user with debug messages is not a friendly thing to do.
 
-Bonus: Adding Detail
---------------------
+.. rubric:: `Bonus: Adding Detail <#bonus-adding-detail>`__
+   :name: bonus-adding-detail
 
 There is also wrapper called ``wrap_UR_detail`` that adds a table of
 strings to a UR called ``detail``. The purpose of this is to allow more
@@ -280,7 +390,7 @@ consideration.
 
 Building on the earlier example for logging:
 
-.. code:: nim
+.. code:: listing
 
     import
       strutils,
@@ -288,7 +398,7 @@ Building on the earlier example for logging:
 
     import
       ur,
-      ur/log
+      urpkg.log
 
     var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
     addHandler(L)
@@ -313,17 +423,17 @@ Building on the earlier example for logging:
 
     echo "message: $1, category: $2".format(response.msg, response.detail["category"])
 
-To use the detail in the context of ``ur/log``, there is a procedure
+To use the detail in the context of ``urpkg.log``, there is a procedure
 called ``setURLogFormat``. It is expecting a pointer to a procedure.
 That procedure *must* have the following parameters:
 
-.. code:: nim
+.. code:: listing
 
     (event: UREvent, detail: Table[string, string]): string
 
 So, for example:
 
-.. code:: nim
+.. code:: listing
 
     var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
     addHandler(L)
@@ -338,17 +448,391 @@ So, for example:
 
 Now, the entry in "test.log" will look like:
 
-.. code:: log
+.. code:: listing
 
     D, [2018-06-29T12:34:42] -- app: [success] [project abc] x incremented by 1.0
 
 NOTE: the ``setURLLogFormat`` procedure also works with the simpler
 ``wrap_UR``. The ``detail`` table will simply be empty.
 
-More Information
-----------------
+.. rubric:: `More Information <#more-information>`__
+   :name: more-information
 
 Additional references and articles:
 
 -  `module documentation: ur <ur.html>`__
--  `module documentation: ur/log <ur.html>`__
+-  `module documentation: urpkg.log <ur.html>`__
+
+.. raw:: html
+
+   <div id="6" class="section">
+
+.. rubric:: `Imports <#6>`__
+   :name: imports
+
+`macros <macros.html>`__, `logging <logging.html>`__,
+`strutils <strutils.html>`__, `tables <tables.html>`__
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div id="7" class="section">
+
+.. rubric:: `Types <#7>`__
+   :name: types
+
+` <>`__
+::
+
+    DisplayClass = enum
+      info, success, warning, danger
+
+info = neutral (but ok if forced to judge) success = warning = ok; but
+with reservations danger = not ok
+` <>`__
+::
+
+    Audience = enum
+      ops, admin, user, public
+
+ops = server/system maintainer clearance admin = users with admin
+clearance user = regular users (not public) public = the whole world (no
+restrictions)
+` <>`__
+::
+
+    URevent = ref object of RootObj
+      msg*: string
+      level*: Level
+      class*: DisplayClass
+      audience*: Audience
+
+The details of a single event.
+` <>`__
+::
+
+    UR_universal = ref object of RootObj
+      value_type*: string
+      events*: seq[URevent]
+      detail*: Table[string, string]
+
+This is the parent object that all ``UR_<type>`` objects inherit.
+
+NOTE: while the ``detail`` property is on all ``UR_<type>`` objects, the
+reference remains ``nil`` if ``wrap_UR`` is used rather than
+``wrap_UR_detail``.
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div id="14" class="section">
+
+.. rubric:: `Methods <#14>`__
+   :name: methods
+
+` <>`__
+::
+
+    method ok(ur: UR_universal): bool {.base, raises: [], tags: [].}
+
+Determines whether evertink is okay, or if there are any errors If
+``ok`` returns ``false``, then there is no expectation of a value being
+set. If ``ok`` returns ``true``, then there IS an expectation of a set
+value.
+` <>`__
+::
+
+    method has_value(ur: UR_universal): bool {.raises: [], tags: [].}
+
+Determines whether a value has been set Three conditions are checked:
+
+    #. Are any events created from a ".set\_X" method? If not, then
+       returns false
+    #. Do any of the events have a class of "danger"? If so, then
+       returns false
+    #. Does the .value of the object appear to be nil or the "default"
+       value; if so, then returns false
+
+Otherwise true is returned.
+
+Note: Condition #3 is not universal due to the differing nature of types
+in Nim.
+
+` <>`__
+::
+
+    method last_level(ur: UR_universal): Level {.raises: [], tags: [].}
+
+Gets the last event's logging level
+` <>`__
+::
+
+    method last_level=(ur: UR_universal; level: Level) {.raises: [], tags: [].}
+
+Sets the last event's level only works if an event has been created
+already; otherwise you will see a KeyError
+` <>`__
+::
+
+    method last_class(ur: UR_universal): DisplayClass {.raises: [], tags: [].}
+
+Gets the last event's display class
+` <>`__
+::
+
+    method last_class=(ur: UR_universal; class: DisplayClass) {.raises: [], tags: [].}
+
+Sets the last event's class only works if an event has been created
+already; otherwise you will see a KeyError
+` <>`__
+::
+
+    method last_audience(ur: UR_universal): Audience {.raises: [], tags: [].}
+
+Gets the last event's audience
+` <>`__
+::
+
+    method last_audience=(ur: UR_universal; audience: Audience) {.raises: [], tags: [].}
+
+Sets the last event's audience Only works if an event has been created
+already; otherwise you will see a KeyError
+` <>`__
+::
+
+    method last_msg(ur: UR_universal): string {.raises: [], tags: [].}
+
+Gets the last event's msg
+` <>`__
+::
+
+    method last_msg=(ur: UR_universal; msg: string) {.raises: [], tags: [].}
+
+Sets the last event's msg Only works if an event has been created
+already; otherwise you will see a KeyError
+` <>`__
+::
+
+    method has_info(ur: UR_universal): bool {.raises: [], tags: [].}
+
+Returns true if there are any events with the ``info`` class
+` <>`__
+::
+
+    method has_success(ur: UR_universal): bool {.raises: [], tags: [].}
+
+Returns true if there are any events with the ``success`` class
+` <>`__
+::
+
+    method has_warning(ur: UR_universal): bool {.raises: [], tags: [].}
+
+Returns true if there are any events with the ``warning`` class
+` <>`__
+::
+
+    method has_danger(ur: UR_universal): bool {.raises: [], tags: [].}
+
+Returns true if there are any events with the ``danger`` class
+` <>`__
+::
+
+    method info_msgs(ur: UR_universal): seq[string] {.raises: [], tags: [].}
+
+Returns a sequence of messsages marked with a class of ``info``
+` <>`__
+::
+
+    method success_msgs(ur: UR_universal): seq[string] {.raises: [], tags: [].}
+
+Returns a sequence of messsages marked with a class of ``success``
+` <>`__
+::
+
+    method warning_msgs(ur: UR_universal): seq[string] {.raises: [], tags: [].}
+
+Returns a sequence of messsages marked with a class of ``warning``
+` <>`__
+::
+
+    method danger_msgs(ur: UR_universal): seq[string] {.raises: [], tags: [].}
+
+Returns a sequence of messsages marked with a class of ``danger``
+` <>`__
+::
+
+    method all_msgs(ur: UR_universal): seq[string] {.raises: [], tags: [].}
+
+Returns all the messsages
+` <>`__
+::
+
+    method `$`(ur: UR_universal): string {.raises: [ValueError], tags: [].}
+
+Creates a readable string of the events in the UR. This function is
+meant for simple debugging.
+` <>`__
+::
+
+    method set_success(ur: UR_universal; msg: string; level = lvlNotice; class = success;
+                      audience = user): void {.raises: [], tags: [].}
+
+Declares a successful event of note. See defaults. Set the .value after
+declaring this.
+` <>`__
+::
+
+    method set_expected_success(ur: UR_universal; msg: string; level = lvlDebug;
+                               class = success; audience = user): void {.raises: [], tags: [].}
+
+Declares a successful but typical event. See defaults. Set the .value
+after declaring this.
+` <>`__
+::
+
+    method set_failure(ur: UR_universal; msg: string; level = lvlNotice; class = danger;
+                      audience = user): void {.raises: [], tags: [].}
+
+Declares a unexpected failure. But not a bug. See defaults.
+` <>`__
+::
+
+    method set_expected_failure(ur: UR_universal; msg: string; level = lvlDebug;
+                               class = danger; audience = user): void {.raises: [], tags: [].}
+
+Declares an expected run-of-the-mill failure. Not worth logging. See
+defaults.
+` <>`__
+::
+
+    method set_internal_bug(ur: UR_universal; msg: string; level = lvlError; class = danger;
+                           audience = ops): void {.raises: [], tags: [].}
+
+Declares a failure that should not have happened; aka "a bug". Should be
+logged for a developer to fix.
+` <>`__
+::
+
+    method set_critical_internal_bug(ur: UR_universal; msg: string; level = lvlFatal;
+                                    class = danger; audience = ops): void {.raises: [],
+        tags: [].}
+
+Declares a failure that not only should not have happened but implies a
+severe problem, such as a security breach. Should be logged for
+top-priority analysis.
+` <>`__
+::
+
+    method set_note_to_public(ur: UR_universal; msg: string; level = lvlNotice;
+                             class = info; audience = public): void {.raises: [], tags: [].}
+
+Declares public information that would be of interest to the entire
+world
+` <>`__
+::
+
+    method set_note_to_user(ur: UR_universal; msg: string; level = lvlNotice; class = info;
+                           audience = user): void {.raises: [], tags: [].}
+
+Declares information that would be of interest to a user or member
+` <>`__
+::
+
+    method set_note_to_admin(ur: UR_universal; msg: string; level = lvlNotice; class = info;
+                            audience = admin): void {.raises: [], tags: [].}
+
+Declares information that would be of interest to a user or member with
+admin rights
+` <>`__
+::
+
+    method set_note_to_ops(ur: UR_universal; msg: string; level = lvlNotice; class = info;
+                          audience = ops): void {.raises: [], tags: [].}
+
+Declares information that would be of interest to IT or developers
+` <>`__
+::
+
+    method set_warning(ur: UR_universal; msg: string; level = lvlNotice; class = warning;
+                      audience = user): void {.raises: [], tags: [].}
+
+Declares full success, but something seems odd; warrenting a warning.
+Recommend setting audience level to something appropriate.
+` <>`__
+::
+
+    method set_debug(ur: UR_universal; msg: string; level = lvlDebug; class = info;
+                    audience = ops): void {.raises: [], tags: [].}
+
+Declares information only useful when debugging. Only seen by IT or
+developers.
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div id="17" class="section">
+
+.. rubric:: `Macros <#17>`__
+   :name: macros
+
+` <>`__
+::
+
+    macro wrap_UR(n: typed): typed
+
+Create a UR\_<n> model and attending methods at compile-time. See main
+documentation.
+` <>`__
+::
+
+    macro wrap_UR_detail(n: typed): typed
+
+Create a UR\_<n> model, including ``detail``,and attending methods, at
+compile-time. See main documentation.
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   <div class="row">
+
+.. raw:: html
+
+   <div class="twelve-columns footer">
+
+Made with Nim. Generated: 2018-07-01 15:56:32 UTC
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </div>
+
+.. raw:: html
+
+   </div>
