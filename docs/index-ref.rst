@@ -6,8 +6,11 @@ The following are the references for ur.
 
 
 Types
------
+=====
 
+
+Audience
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -35,6 +38,9 @@ public
   the whole world (no restrictions)
 
 
+DisplayClass
+---------------------------------------------------------
+
 .. code:: nim
 
     DisplayClass* = enum
@@ -61,6 +67,9 @@ danger
     not ok
 
 
+UR_universal
+---------------------------------------------------------
+
 .. code:: nim
 
     UR_universal* = ref object of RootObj
@@ -77,6 +86,9 @@ NOTE: while the ``detail`` property is on all ``UR_<type>`` objects, the
 reference remains ``nil`` if ``wrap_UR`` is used rather than
 ``wrap_UR_detail``.
 
+
+URevent
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -97,8 +109,11 @@ The details of a single event.
 
 
 Procs and Methods
------------------
+=================
 
+
+`$`
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -108,6 +123,9 @@ Procs and Methods
 
 Creates a readable string of the events in the UR. This function is meant for simple debugging.
 
+
+`last_audience=`
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -119,6 +137,9 @@ Sets the last event's audience
 Only works if an event has been created already; otherwise you will see a KeyError
 
 
+`last_class=`
+---------------------------------------------------------
+
 .. code:: nim
 
     method `last_class=`*(ur: UR_universal, class: DisplayClass) =
@@ -128,6 +149,9 @@ Only works if an event has been created already; otherwise you will see a KeyErr
 Sets the last event's class
 only works if an event has been created already; otherwise you will see a KeyError
 
+
+`last_level=`
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -139,6 +163,9 @@ Sets the last event's level
 only works if an event has been created already; otherwise you will see a KeyError
 
 
+`last_msg=`
+---------------------------------------------------------
+
 .. code:: nim
 
     method `last_msg=`*(ur: UR_universal, msg: string) =
@@ -149,6 +176,9 @@ Sets the last event's msg
 Only works if an event has been created already; otherwise you will see a KeyError
 
 
+all_msgs
+---------------------------------------------------------
+
 .. code:: nim
 
     method all_msgs*(ur: UR_universal): seq[string] =
@@ -157,6 +187,9 @@ Only works if an event has been created already; otherwise you will see a KeyErr
 
 Returns all the messsages
 
+
+danger_msgs
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -167,6 +200,9 @@ Returns all the messsages
 Returns a sequence of messsages marked with a class of ``danger``
 
 
+has_danger
+---------------------------------------------------------
+
 .. code:: nim
 
     method has_danger*(ur: UR_universal): bool =
@@ -175,6 +211,9 @@ Returns a sequence of messsages marked with a class of ``danger``
 
 Returns true if there are any events with the ``danger`` class
 
+
+has_info
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -185,6 +224,9 @@ Returns true if there are any events with the ``danger`` class
 Returns true if there are any events with the ``info`` class
 
 
+has_success
+---------------------------------------------------------
+
 .. code:: nim
 
     method has_success*(ur: UR_universal): bool =
@@ -193,6 +235,9 @@ Returns true if there are any events with the ``info`` class
 
 Returns true if there are any events with the ``success`` class
 
+
+has_value
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -212,6 +257,9 @@ Otherwise true is returned.
 Note: Condition #3 is not universal due to the differing nature of types in Nim.
 
 
+has_warning
+---------------------------------------------------------
+
 .. code:: nim
 
     method has_warning*(ur: UR_universal): bool =
@@ -220,6 +268,9 @@ Note: Condition #3 is not universal due to the differing nature of types in Nim.
 
 Returns true if there are any events with the ``warning`` class
 
+
+info_msgs
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -230,6 +281,9 @@ Returns true if there are any events with the ``warning`` class
 Returns a sequence of messsages marked with a class of ``info``
 
 
+last_audience
+---------------------------------------------------------
+
 .. code:: nim
 
     method last_audience*(ur: UR_universal): Audience =
@@ -238,6 +292,9 @@ Returns a sequence of messsages marked with a class of ``info``
 
 Gets the last event's audience
 
+
+last_class
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -248,6 +305,9 @@ Gets the last event's audience
 Gets the last event's display class
 
 
+last_level
+---------------------------------------------------------
+
 .. code:: nim
 
     method last_level*(ur: UR_universal): Level =
@@ -257,6 +317,9 @@ Gets the last event's display class
 Gets the last event's logging level
 
 
+last_msg
+---------------------------------------------------------
+
 .. code:: nim
 
     method last_msg*(ur: UR_universal): string =
@@ -265,6 +328,9 @@ Gets the last event's logging level
 
 Gets the last event's msg
 
+
+ok
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -277,6 +343,9 @@ If ``ok`` returns ``false``, then there is no expectation of a value being set.
 If ``ok`` returns ``true``, then there IS an expectation of a set value.
 
 
+set_critical_internal_bug
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_critical_internal_bug*(ur: UR_universal, msg: string, level=lvlFatal, class=danger, audience=ops): void =
@@ -287,6 +356,9 @@ Declares a failure that not only should not have happened but implies a severe p
 logged for top-priority analysis.
 
 
+set_debug
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_debug*(ur: UR_universal, msg: string, level=lvlDebug, class=info, audience=ops): void =
@@ -296,6 +368,9 @@ logged for top-priority analysis.
 Declares information only useful when debugging. Only seen by IT or developers.
 
 
+set_expected_failure
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_expected_failure*(ur: UR_universal, msg: string, level=lvlDebug, class=danger, audience=user): void =
@@ -304,6 +379,9 @@ Declares information only useful when debugging. Only seen by IT or developers.
 
 Declares an expected run-of-the-mill failure. Not worth logging. See defaults.
 
+
+set_expected_success
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -315,6 +393,9 @@ Declares a successful but typical event. See defaults.
 Set the .value after declaring this.
 
 
+set_failure
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_failure*(ur: UR_universal, msg: string, level=lvlNotice, class=danger, audience=user): void =
@@ -323,6 +404,9 @@ Set the .value after declaring this.
 
 Declares a unexpected failure. But not a bug. See defaults.
 
+
+set_internal_bug
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -333,6 +417,9 @@ Declares a unexpected failure. But not a bug. See defaults.
 Declares a failure that should not have happened; aka "a bug". Should be logged for a developer to fix.
 
 
+set_note_to_admin
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_note_to_admin*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=admin): void =
@@ -341,6 +428,9 @@ Declares a failure that should not have happened; aka "a bug". Should be logged 
 
 Declares information that would be of interest to a user or member with admin rights
 
+
+set_note_to_ops
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -351,6 +441,9 @@ Declares information that would be of interest to a user or member with admin ri
 Declares information that would be of interest to IT or developers
 
 
+set_note_to_public
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_note_to_public*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=public): void =
@@ -360,6 +453,9 @@ Declares information that would be of interest to IT or developers
 Declares public information that would be of interest to the entire world
 
 
+set_note_to_user
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_note_to_user*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=user): void =
@@ -368,6 +464,9 @@ Declares public information that would be of interest to the entire world
 
 Declares information that would be of interest to a user or member
 
+
+set_success
+---------------------------------------------------------
 
 .. code:: nim
 
@@ -379,6 +478,9 @@ Declares a successful event of note. See defaults.
 Set the .value after declaring this.
 
 
+set_warning
+---------------------------------------------------------
+
 .. code:: nim
 
     method set_warning*(ur: UR_universal, msg: string, level=lvlNotice, class=warning, audience=user): void =
@@ -389,6 +491,9 @@ Declares full success, but something seems odd; warrenting a warning.
 Recommend setting audience level to something appropriate.
 
 
+success_msgs
+---------------------------------------------------------
+
 .. code:: nim
 
     method success_msgs*(ur: UR_universal): seq[string] =
@@ -397,6 +502,9 @@ Recommend setting audience level to something appropriate.
 
 Returns a sequence of messsages marked with a class of ``success``
 
+
+warning_msgs
+---------------------------------------------------------
 
 .. code:: nim
 
