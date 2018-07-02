@@ -342,22 +342,5 @@ More Information
 Additional references and articles:
 
 -  `module documentation: ur <docs/index-ref.rst>`__
-info    = neutral (but ok if forced to judge)
-success =
-warning = ok; but with reservations
-danger  = not ok
-ops    = server/system maintainer clearance
-admin  = users with admin clearance
-user   = regular users (not public)
-public = the whole world (no restrictions)
-The details of a single event.
-This is the parent object that all ``UR_<type>`` objects inherit.
-
-NOTE: while the ``detail`` property is on all ``UR_<type>`` objects, the
-reference remains ``nil`` if ``wrap_UR`` is used rather than
-``wrap_UR_detail``.
-create the macro string
-Create a UR_<n> model and attending methods at compile-time. See main documentation.
-Create a UR_<n> model, including ``detail``,and attending methods, at compile-time. See main documentation.
 
 
