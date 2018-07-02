@@ -109,7 +109,7 @@ Library Example
 ---------------
 
 Internally, UR has one library already integrated: Nim's standard
-``logging`` module. You can use it by importing 'urpkg.log'.
+``logging`` module. You can use it by importing 'ur/log'.
 
 For example:
 
@@ -121,7 +121,7 @@ For example:
 
     import
       ur,
-      urpkg.log
+      ur/log
 
 
     var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
@@ -279,7 +279,7 @@ Building on the earlier example for logging:
 
     import
       ur,
-      urpkg.log
+      ur/log
 
     var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
     addHandler(L)
@@ -304,7 +304,7 @@ Building on the earlier example for logging:
 
     echo "message: $1, category: $2".format(response.msg, response.detail["category"])
 
-To use the detail in the context of ``urpkg.log``, there is a procedure
+To use the detail in the context of ``ur/log``, there is a procedure
 called ``setURLogFormat``. It is expecting a pointer to a procedure.
 That procedure *must* have the following parameters:
 
@@ -341,8 +341,7 @@ More Information
 
 Additional references and articles:
 
--  `module documentation: ur <ur.html>`__
--  `module documentation: urpkg.log <ur.html>`__
+-  `module documentation: ur <docs/index-ref.rst>`__
 info    = neutral (but ok if forced to judge)
 success =
 warning = ok; but with reservations
@@ -357,6 +356,7 @@ This is the parent object that all ``UR_<type>`` objects inherit.
 NOTE: while the ``detail`` property is on all ``UR_<type>`` objects, the
 reference remains ``nil`` if ``wrap_UR`` is used rather than
 ``wrap_UR_detail``.
+create the macro string
 Create a UR_<n> model and attending methods at compile-time. See main documentation.
 Create a UR_<n> model, including ``detail``,and attending methods, at compile-time. See main documentation.
 

@@ -106,7 +106,7 @@
 ## ---------------
 ## 
 ## Internally, UR has one library already integrated: Nim's standard
-## ``logging`` module. You can use it by importing 'urpkg.log'.
+## ``logging`` module. You can use it by importing 'ur/log'.
 ## 
 ## For example:
 ## 
@@ -118,7 +118,7 @@
 ## 
 ##     import
 ##       ur,
-##       urpkg.log
+##       ur/log
 ## 
 ## 
 ##     var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
@@ -276,7 +276,7 @@
 ## 
 ##     import
 ##       ur,
-##       urpkg.log
+##       ur/log
 ## 
 ##     var L = newFileLogger("test.log", fmtStr = verboseFmtStr)
 ##     addHandler(L)
@@ -301,7 +301,7 @@
 ## 
 ##     echo "message: $1, category: $2".format(response.msg, response.detail["category"])
 ## 
-## To use the detail in the context of ``urpkg.log``, there is a procedure
+## To use the detail in the context of ``ur/log``, there is a procedure
 ## called ``setURLogFormat``. It is expecting a pointer to a procedure.
 ## That procedure *must* have the following parameters:
 ## 
@@ -338,8 +338,7 @@
 ## 
 ## Additional references and articles:
 ## 
-## -  `module documentation: ur <ur.html>`__
-## -  `module documentation: urpkg.log <ur.html>`__
+## -  `module documentation: ur <docs/index-ref.rst>`__
 
 import
   macros,
