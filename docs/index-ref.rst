@@ -18,12 +18,21 @@ Types
       public
 
 
-source line: 361
+*source line: 370*
 
-ops    = server/system maintainer clearance
-admin  = users with admin clearance
-user   = regular users (not public)
-public = the whole world (no restrictions)
+Permission level for news of the event.
+
+ops
+  only seen by those with server/system maintainer clearance
+
+admin
+  only seen by end-users with admin clearance (and ops)
+
+user
+  only seen by regular users (and admin and ops)
+
+public
+  the whole world (no restrictions)
 
 
 .. code:: nim
@@ -35,12 +44,21 @@ public = the whole world (no restrictions)
       danger
 
 
-source line: 352
+*source line: 352*
 
-info    = neutral (but ok if forced to judge)
-success =
-warning = ok; but with reservations
-danger  = not ok
+Judgement of the type of event.
+
+info
+    neutral (but ok if forced to judge)
+
+success
+    ok
+
+warning
+    ok; but with reservations
+
+danger
+    not ok
 
 
 .. code:: nim
@@ -51,7 +69,7 @@ danger  = not ok
       detail*: Table[string, string]    # dormant nil unless macro_UR_detail is used
 
 
-source line: 378
+*source line: 396*
 
 This is the parent object that all ``UR_<type>`` objects inherit.
 
@@ -69,7 +87,7 @@ reference remains ``nil`` if ``wrap_UR`` is used rather than
       audience*: Audience    # defaults to ops
 
 
-source line: 372
+*source line: 390*
 
 The details of a single event.
 
@@ -78,15 +96,15 @@ The details of a single event.
 
 
 
-Procs
------
+Procs and Methods
+-----------------
 
 
 .. code:: nim
 
     method `$`*(ur: UR_universal): string =
 
-source line: 618
+*source line: 636*
 
 Creates a readable string of the events in the UR. This function is meant for simple debugging.
 
@@ -95,7 +113,7 @@ Creates a readable string of the events in the UR. This function is meant for si
 
     method `last_audience=`*(ur: UR_universal, audience: Audience) =
 
-source line: 521
+*source line: 539*
 
 Sets the last event's audience
 Only works if an event has been created already; otherwise you will see a KeyError
@@ -105,7 +123,7 @@ Only works if an event has been created already; otherwise you will see a KeyErr
 
     method `last_class=`*(ur: UR_universal, class: DisplayClass) =
 
-source line: 507
+*source line: 525*
 
 Sets the last event's class
 only works if an event has been created already; otherwise you will see a KeyError
@@ -115,7 +133,7 @@ only works if an event has been created already; otherwise you will see a KeyErr
 
     method `last_level=`*(ur: UR_universal, level: Level) =
 
-source line: 493
+*source line: 511*
 
 Sets the last event's level
 only works if an event has been created already; otherwise you will see a KeyError
@@ -125,7 +143,7 @@ only works if an event has been created already; otherwise you will see a KeyErr
 
     method `last_msg=`*(ur: UR_universal, msg: string) =
 
-source line: 536
+*source line: 554*
 
 Sets the last event's msg
 Only works if an event has been created already; otherwise you will see a KeyError
@@ -135,7 +153,7 @@ Only works if an event has been created already; otherwise you will see a KeyErr
 
     method all_msgs*(ur: UR_universal): seq[string] =
 
-source line: 611
+*source line: 629*
 
 Returns all the messsages
 
@@ -144,7 +162,7 @@ Returns all the messsages
 
     method danger_msgs*(ur: UR_universal): seq[string] =
 
-source line: 603
+*source line: 621*
 
 Returns a sequence of messsages marked with a class of ``danger``
 
@@ -153,7 +171,7 @@ Returns a sequence of messsages marked with a class of ``danger``
 
     method has_danger*(ur: UR_universal): bool =
 
-source line: 570
+*source line: 588*
 
 Returns true if there are any events with the ``danger`` class
 
@@ -162,7 +180,7 @@ Returns true if there are any events with the ``danger`` class
 
     method has_info*(ur: UR_universal): bool =
 
-source line: 543
+*source line: 561*
 
 Returns true if there are any events with the ``info`` class
 
@@ -171,7 +189,7 @@ Returns true if there are any events with the ``info`` class
 
     method has_success*(ur: UR_universal): bool =
 
-source line: 552
+*source line: 570*
 
 Returns true if there are any events with the ``success`` class
 
@@ -180,7 +198,7 @@ Returns true if there are any events with the ``success`` class
 
     method has_value*(ur: UR_universal): bool =
 
-source line: 471
+*source line: 489*
 
 Determines whether a value has been set
 Three conditions are checked:
@@ -198,7 +216,7 @@ Note: Condition #3 is not universal due to the differing nature of types in Nim.
 
     method has_warning*(ur: UR_universal): bool =
 
-source line: 561
+*source line: 579*
 
 Returns true if there are any events with the ``warning`` class
 
@@ -207,7 +225,7 @@ Returns true if there are any events with the ``warning`` class
 
     method info_msgs*(ur: UR_universal): seq[string] =
 
-source line: 579
+*source line: 597*
 
 Returns a sequence of messsages marked with a class of ``info``
 
@@ -216,7 +234,7 @@ Returns a sequence of messsages marked with a class of ``info``
 
     method last_audience*(ur: UR_universal): Audience =
 
-source line: 513
+*source line: 531*
 
 Gets the last event's audience
 
@@ -225,7 +243,7 @@ Gets the last event's audience
 
     method last_class*(ur: UR_universal): DisplayClass =
 
-source line: 499
+*source line: 517*
 
 Gets the last event's display class
 
@@ -234,7 +252,7 @@ Gets the last event's display class
 
     method last_level*(ur: UR_universal): Level =
 
-source line: 485
+*source line: 503*
 
 Gets the last event's logging level
 
@@ -243,7 +261,7 @@ Gets the last event's logging level
 
     method last_msg*(ur: UR_universal): string =
 
-source line: 527
+*source line: 545*
 
 Gets the last event's msg
 
@@ -252,7 +270,7 @@ Gets the last event's msg
 
     method ok*(ur: UR_universal): bool {.base.} =
 
-source line: 457
+*source line: 475*
 
 Determines whether evertink is okay, or if there are any errors
 If ``ok`` returns ``false``, then there is no expectation of a value being set.
@@ -263,7 +281,7 @@ If ``ok`` returns ``true``, then there IS an expectation of a set value.
 
     method set_critical_internal_bug*(ur: UR_universal, msg: string, level=lvlFatal, class=danger, audience=ops): void =
 
-source line: 684
+*source line: 702*
 
 Declares a failure that not only should not have happened but implies a severe problem, such as a security breach. Should be
 logged for top-priority analysis.
@@ -273,7 +291,7 @@ logged for top-priority analysis.
 
     method set_debug*(ur: UR_universal, msg: string, level=lvlDebug, class=info, audience=ops): void =
 
-source line: 740
+*source line: 758*
 
 Declares information only useful when debugging. Only seen by IT or developers.
 
@@ -282,7 +300,7 @@ Declares information only useful when debugging. Only seen by IT or developers.
 
     method set_expected_failure*(ur: UR_universal, msg: string, level=lvlDebug, class=danger, audience=user): void =
 
-source line: 664
+*source line: 682*
 
 Declares an expected run-of-the-mill failure. Not worth logging. See defaults.
 
@@ -291,7 +309,7 @@ Declares an expected run-of-the-mill failure. Not worth logging. See defaults.
 
     method set_expected_success*(ur: UR_universal, msg: string, level=lvlDebug, class=success, audience=user): void =
 
-source line: 643
+*source line: 661*
 
 Declares a successful but typical event. See defaults.
 Set the .value after declaring this.
@@ -301,7 +319,7 @@ Set the .value after declaring this.
 
     method set_failure*(ur: UR_universal, msg: string, level=lvlNotice, class=danger, audience=user): void =
 
-source line: 654
+*source line: 672*
 
 Declares a unexpected failure. But not a bug. See defaults.
 
@@ -310,7 +328,7 @@ Declares a unexpected failure. But not a bug. See defaults.
 
     method set_internal_bug*(ur: UR_universal, msg: string, level=lvlError, class=danger, audience=ops): void =
 
-source line: 674
+*source line: 692*
 
 Declares a failure that should not have happened; aka "a bug". Should be logged for a developer to fix.
 
@@ -319,7 +337,7 @@ Declares a failure that should not have happened; aka "a bug". Should be logged 
 
     method set_note_to_admin*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=admin): void =
 
-source line: 712
+*source line: 730*
 
 Declares information that would be of interest to a user or member with admin rights
 
@@ -328,7 +346,7 @@ Declares information that would be of interest to a user or member with admin ri
 
     method set_note_to_ops*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=ops): void =
 
-source line: 721
+*source line: 739*
 
 Declares information that would be of interest to IT or developers
 
@@ -337,7 +355,7 @@ Declares information that would be of interest to IT or developers
 
     method set_note_to_public*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=public): void =
 
-source line: 694
+*source line: 712*
 
 Declares public information that would be of interest to the entire world
 
@@ -346,7 +364,7 @@ Declares public information that would be of interest to the entire world
 
     method set_note_to_user*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=user): void =
 
-source line: 703
+*source line: 721*
 
 Declares information that would be of interest to a user or member
 
@@ -355,7 +373,7 @@ Declares information that would be of interest to a user or member
 
     method set_success*(ur: UR_universal, msg: string, level=lvlNotice, class=success, audience=user): void =
 
-source line: 632
+*source line: 650*
 
 Declares a successful event of note. See defaults.
 Set the .value after declaring this.
@@ -365,7 +383,7 @@ Set the .value after declaring this.
 
     method set_warning*(ur: UR_universal, msg: string, level=lvlNotice, class=warning, audience=user): void =
 
-source line: 730
+*source line: 748*
 
 Declares full success, but something seems odd; warrenting a warning.
 Recommend setting audience level to something appropriate.
@@ -375,7 +393,7 @@ Recommend setting audience level to something appropriate.
 
     method success_msgs*(ur: UR_universal): seq[string] =
 
-source line: 587
+*source line: 605*
 
 Returns a sequence of messsages marked with a class of ``success``
 
@@ -384,7 +402,7 @@ Returns a sequence of messsages marked with a class of ``success``
 
     method warning_msgs*(ur: UR_universal): seq[string] =
 
-source line: 595
+*source line: 613*
 
 Returns a sequence of messsages marked with a class of ``warning``
 

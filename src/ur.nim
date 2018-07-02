@@ -350,19 +350,37 @@ export Level
 
 type
   DisplayClass* = enum
-    ## info    = neutral (but ok if forced to judge)
-    ## success = 
-    ## warning = ok; but with reservations
-    ## danger  = not ok
+    ## Judgement of the type of event.
+    ## 
+    ## info
+    ##     neutral (but ok if forced to judge)
+    ## 
+    ## success
+    ##     ok
+    ## 
+    ## warning
+    ##     ok; but with reservations
+    ## 
+    ## danger
+    ##     not ok
     info,
     success,
     warning,
     danger
   Audience* = enum
-    ## ops    = server/system maintainer clearance
-    ## admin  = users with admin clearance
-    ## user   = regular users (not public)
-    ## public = the whole world (no restrictions)
+    ## Permission level for news of the event.
+    ## 
+    ## ops
+    ##   only seen by those with server/system maintainer clearance
+    ## 
+    ## admin
+    ##   only seen by end-users with admin clearance (and ops)
+    ## 
+    ## user
+    ##   only seen by regular users (and admin and ops)
+    ## 
+    ## public
+    ##   the whole world (no restrictions)
     ops,
     admin,
     user,
