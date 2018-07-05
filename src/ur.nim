@@ -1,9 +1,9 @@
-## A Universal Return (UR) is an object that allows the programmer to
+## A Universal Result (UR) is an object that allows the programmer to
 ## return either a value or a sequence of messages (or both) from a
 ## procedure. This could, of course, be done by hand using tuple or other
 ## options, but the goal of this package is two-fold:
 ## 
-## 1. Make it easy (and predictable) to create such "dynamic" returns.
+## 1. Make it easy (and predictable) to create such "dynamic" results.
 ## 2. Make it possible to integrate such a system with other libraries.
 ## 
 ## **Table of Contents**
@@ -57,7 +57,7 @@
 ##       if denominator == 0.0:
 ##         result.set_failure("You can't divide by zero; Ever")
 ##         return
-##       if denominator == 0.0:
+##       if denominator < 0.0:
 ##         result.set_failure("Negative denominators are not allowed")
 ##         return
 ##       if denominator < 0.1:
@@ -444,8 +444,13 @@ proc create_UR_string(val_type: string, use_detail: bool): string {.compileTime.
   result.add("\n")
 
 
+#@ proc newUR_<type>*(): UR_<type> =
+  ## Create a new instance of UR_<type>. Where <type> is the data type passed
+  ## into the ``wrap_UR`` or ``wrap_UR_detail`` macro.
+
+
 macro wrap_UR*(n: typed): typed =
-  ## Create a UR_<n> model and attending methods at compile-time. See main documentation.
+  ## Create a **UR_<n>** model and attending methods at compile-time. See main documentation.
   var s: string = ""
   let val_type = $n
   #
@@ -459,7 +464,7 @@ macro wrap_UR*(n: typed): typed =
 
 
 macro wrap_UR_detail*(n: typed): typed =
-  ## Create a UR_<n> model, including ``detail``,and attending methods, at compile-time. See main documentation.
+  ## Create a **UR_<n>** model, including ``detail``, and attending methods, at compile-time. See main documentation.
   var s: string = ""
   let val_type = $n
   #
@@ -648,6 +653,7 @@ method `$`*(ur: UR_universal): string =
 
 
 method set_success*(ur: UR_universal, msg: string, level=lvlNotice, class=success, audience=user): void =
+  #@ Common Responses
   ## Declares a successful event of note. See defaults.
   ## Set the .value after declaring this.
   var event = URevent()
@@ -659,6 +665,7 @@ method set_success*(ur: UR_universal, msg: string, level=lvlNotice, class=succes
 
 
 method set_expected_success*(ur: UR_universal, msg: string, level=lvlDebug, class=success, audience=user): void =
+  #@ Common Responses
   ## Declares a successful but typical event. See defaults.
   ## Set the .value after declaring this.
   var event = URevent()
@@ -670,6 +677,7 @@ method set_expected_success*(ur: UR_universal, msg: string, level=lvlDebug, clas
 
 
 method set_failure*(ur: UR_universal, msg: string, level=lvlNotice, class=danger, audience=user): void =
+  #@ Common Responses
   ## Declares a unexpected failure. But not a bug. See defaults.
   var event = URevent()
   event.msg = msg
@@ -680,6 +688,7 @@ method set_failure*(ur: UR_universal, msg: string, level=lvlNotice, class=danger
 
 
 method set_expected_failure*(ur: UR_universal, msg: string, level=lvlDebug, class=danger, audience=user): void =
+  #@ Common Responses
   ## Declares an expected run-of-the-mill failure. Not worth logging. See defaults.
   var event = URevent()
   event.msg = msg
@@ -690,6 +699,7 @@ method set_expected_failure*(ur: UR_universal, msg: string, level=lvlDebug, clas
 
 
 method set_internal_bug*(ur: UR_universal, msg: string, level=lvlError, class=danger, audience=ops): void =
+  #@ Common Responses
   ## Declares a failure that should not have happened; aka "a bug". Should be logged for a developer to fix.
   var event = URevent()
   event.msg = msg
@@ -700,6 +710,7 @@ method set_internal_bug*(ur: UR_universal, msg: string, level=lvlError, class=da
 
 
 method set_critical_internal_bug*(ur: UR_universal, msg: string, level=lvlFatal, class=danger, audience=ops): void =
+  #@ Common Responses
   ## Declares a failure that not only should not have happened but implies a severe problem, such as a security breach. Should be
   ## logged for top-priority analysis.
   var event = URevent()
@@ -710,6 +721,7 @@ method set_critical_internal_bug*(ur: UR_universal, msg: string, level=lvlFatal,
   ur.events.add(event)
 
 method set_note_to_public*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=public): void =
+  #@ Common Responses
   ## Declares public information that would be of interest to the entire world
   var event = URevent()
   event.msg = msg
@@ -719,6 +731,7 @@ method set_note_to_public*(ur: UR_universal, msg: string, level=lvlNotice, class
   ur.events.add(event)
 
 method set_note_to_user*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=user): void =
+  #@ Common Responses
   ## Declares information that would be of interest to a user or member
   var event = URevent()
   event.msg = msg
@@ -728,6 +741,7 @@ method set_note_to_user*(ur: UR_universal, msg: string, level=lvlNotice, class=i
   ur.events.add(event)
 
 method set_note_to_admin*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=admin): void =
+  #@ Common Responses
   ## Declares information that would be of interest to a user or member with admin rights
   var event = URevent()
   event.msg = msg
@@ -737,6 +751,7 @@ method set_note_to_admin*(ur: UR_universal, msg: string, level=lvlNotice, class=
   ur.events.add(event)
 
 method set_note_to_ops*(ur: UR_universal, msg: string, level=lvlNotice, class=info, audience=ops): void =
+  #@ Common Responses
   ## Declares information that would be of interest to IT or developers
   var event = URevent()
   event.msg = msg
@@ -746,6 +761,7 @@ method set_note_to_ops*(ur: UR_universal, msg: string, level=lvlNotice, class=in
   ur.events.add(event)
 
 method set_warning*(ur: UR_universal, msg: string, level=lvlNotice, class=warning, audience=user): void =
+  #@ Common Responses
   ## Declares full success, but something seems odd; warrenting a warning.
   ## Recommend setting audience level to something appropriate.
   var event = URevent()
@@ -756,6 +772,7 @@ method set_warning*(ur: UR_universal, msg: string, level=lvlNotice, class=warnin
   ur.events.add(event)
 
 method set_debug*(ur: UR_universal, msg: string, level=lvlDebug, class=info, audience=ops): void =
+  #@ Common Responses
   ## Declares information only useful when debugging. Only seen by IT or developers.
   var event = URevent()
   event.msg = msg

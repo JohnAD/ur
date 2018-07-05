@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "John Dupuy"
-description   = "Universal return objects"
+description   = "Universal Result objects"
 license       = "MIT"
 srcDir        = "src"
 

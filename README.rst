@@ -1,12 +1,12 @@
 Module ur
 ==============================================================================
 
-A Universal Return (UR) is an object that allows the programmer to
+A Universal Result (UR) is an object that allows the programmer to
 return either a value or a sequence of messages (or both) from a
 procedure. This could, of course, be done by hand using tuple or other
 options, but the goal of this package is two-fold:
 
-1. Make it easy (and predictable) to create such "dynamic" returns.
+1. Make it easy (and predictable) to create such "dynamic" results.
 2. Make it possible to integrate such a system with other libraries.
 
 **Table of Contents**
@@ -60,7 +60,7 @@ Now, we use the new object for returning a flexible result:
       if denominator == 0.0:
         result.set_failure("You can't divide by zero; Ever")
         return
-      if denominator == 0.0:
+      if denominator < 0.0:
         result.set_failure("Negative denominators are not allowed")
         return
       if denominator < 0.1:
