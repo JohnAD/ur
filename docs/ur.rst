@@ -337,8 +337,8 @@ NOTE: the ``setURLLogFormat`` procedure also works with the simpler
 ``wrap_UR``. The ``detail`` table will simply be empty.
 
 
-Table Of Contents
-=================
+See also
+========
 
-- `Reference for module **{{ur}}** <ur-ref.rst>`__
-- `Reference for module **{{ur/log}}** <ur-log-ref.rst>`__
+- `Reference for module ur <ur-ref.rst>`__
+- `Reference for module ur/log <ur-log-ref.rst>`__

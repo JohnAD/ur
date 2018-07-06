@@ -42,9 +42,9 @@ The supplied procedure must have parameters in the form of:
 
 
 
-Table Of Contents
-=================
+See also
+========
 
-- `General Documentation for **{{ur}}** <index.rst>`__
-- `Reference for module **{{ur}}** <ur-ref.rst>`__
-- `Reference for module **{{ur/log}}** <ur-log-ref.rst>`__
+- `General Documentation for ur <ur.rst>`__
+- `Reference for module ur <ur-ref.rst>`__
+- `Reference for module ur/log <ur-log-ref.rst>`__

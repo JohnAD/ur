@@ -560,9 +560,9 @@ Create a **UR_<n>** model, including ``detail``, and attending methods, at compi
 
 
 
-Table Of Contents
-=================
+See also
+========
 
-- `General Documentation for **{{ur}}** <index.rst>`__
-- `Reference for module **{{ur}}** <ur-ref.rst>`__
-- `Reference for module **{{ur/log}}** <ur-log-ref.rst>`__
+- `General Documentation for ur <ur.rst>`__
+- `Reference for module ur <ur-ref.rst>`__
+- `Reference for module ur/log <ur-log-ref.rst>`__
