@@ -24,19 +24,19 @@ Audience
 
 *source line: 385*
 
-Permission level for news of the event.
-
-ops
-  only seen by those with server/system maintainer clearance
-
-admin
-  only seen by end-users with admin clearance (and ops)
-
-user
-  only seen by regular users (and admin and ops)
-
-public
-  the whole world (no restrictions)
+    Permission level for news of the event.
+    
+    ops
+      only seen by those with server/system maintainer clearance
+    
+    admin
+      only seen by end-users with admin clearance (and ops)
+    
+    user
+      only seen by regular users (and admin and ops)
+    
+    public
+      the whole world (no restrictions)
 
 
 DisplayClass
@@ -53,19 +53,19 @@ DisplayClass
 
 *source line: 367*
 
-Judgement of the type of event.
-
-info
-    neutral (but ok if forced to judge)
-
-success
-    ok
-
-warning
-    ok; but with reservations
-
-danger
-    not ok
+    Judgement of the type of event.
+    
+    info
+        neutral (but ok if forced to judge)
+    
+    success
+        ok
+    
+    warning
+        ok; but with reservations
+    
+    danger
+        not ok
 
 
 UR_universal
@@ -81,11 +81,11 @@ UR_universal
 
 *source line: 411*
 
-This is the parent object that all ``UR_<type>`` objects inherit.
-
-NOTE: while the ``detail`` property is on all ``UR_<type>`` objects, the
-reference remains ``nil`` if ``wrap_UR`` is used rather than
-``wrap_UR_detail``.
+    This is the parent object that all ``UR_<type>`` objects inherit.
+    
+    NOTE: while the ``detail`` property is on all ``UR_<type>`` objects, the
+    reference remains ``nil`` if ``wrap_UR`` is used rather than
+    ``wrap_UR_detail``.
 
 
 URevent
@@ -102,7 +102,7 @@ URevent
 
 *source line: 405*
 
-The details of a single event.
+    The details of a single event.
 
 
 
@@ -122,7 +122,7 @@ Procs and Methods
 
 *source line: 707*
 
-Creates a readable string of the events in the UR. This function is meant for simple debugging.
+    Creates a readable string of the events in the UR. This function is meant for simple debugging.
 
 
 `last_audience=`
@@ -134,8 +134,8 @@ Creates a readable string of the events in the UR. This function is meant for si
 
 *source line: 610*
 
-Sets the last event's audience
-Only works if an event has been created already; otherwise you will see a KeyError
+    Sets the last event's audience
+    Only works if an event has been created already; otherwise you will see a KeyError
 
 
 `last_class=`
@@ -147,8 +147,8 @@ Only works if an event has been created already; otherwise you will see a KeyErr
 
 *source line: 596*
 
-Sets the last event's class
-only works if an event has been created already; otherwise you will see a KeyError
+    Sets the last event's class
+    only works if an event has been created already; otherwise you will see a KeyError
 
 
 `last_level=`
@@ -160,8 +160,8 @@ only works if an event has been created already; otherwise you will see a KeyErr
 
 *source line: 582*
 
-Sets the last event's level
-only works if an event has been created already; otherwise you will see a KeyError
+    Sets the last event's level
+    only works if an event has been created already; otherwise you will see a KeyError
 
 
 `last_msg=`
@@ -173,8 +173,8 @@ only works if an event has been created already; otherwise you will see a KeyErr
 
 *source line: 625*
 
-Sets the last event's msg
-Only works if an event has been created already; otherwise you will see a KeyError
+    Sets the last event's msg
+    Only works if an event has been created already; otherwise you will see a KeyError
 
 
 all_msgs
@@ -186,7 +186,7 @@ all_msgs
 
 *source line: 700*
 
-Returns all the messsages
+    Returns all the messsages
 
 
 danger_msgs
@@ -198,7 +198,7 @@ danger_msgs
 
 *source line: 692*
 
-Returns a sequence of messsages marked with a class of ``danger``
+    Returns a sequence of messsages marked with a class of ``danger``
 
 
 has_danger
@@ -210,7 +210,7 @@ has_danger
 
 *source line: 659*
 
-Returns true if there are any events with the ``danger`` class
+    Returns true if there are any events with the ``danger`` class
 
 
 has_info
@@ -222,7 +222,7 @@ has_info
 
 *source line: 632*
 
-Returns true if there are any events with the ``info`` class
+    Returns true if there are any events with the ``info`` class
 
 
 has_success
@@ -234,7 +234,7 @@ has_success
 
 *source line: 641*
 
-Returns true if there are any events with the ``success`` class
+    Returns true if there are any events with the ``success`` class
 
 
 has_value
@@ -246,16 +246,16 @@ has_value
 
 *source line: 560*
 
-Determines whether a value has been set
-Three conditions are checked:
-
-  1. Are any events created from a ".set_X" method? If not, then returns false
-  2. Do any of the events have a class of "danger"? If so, then returns false
-  3. Does the .value of the object appear to be nil or the "default" value; if so, then returns false
-
-Otherwise true is returned.
-
-Note: Condition #3 is not universal due to the differing nature of types in Nim.
+    Determines whether a value has been set
+    Three conditions are checked:
+    
+      1. Are any events created from a ".set_X" method? If not, then returns false
+      2. Do any of the events have a class of "danger"? If so, then returns false
+      3. Does the .value of the object appear to be nil or the "default" value; if so, then returns false
+    
+    Otherwise true is returned.
+    
+    Note: Condition #3 is not universal due to the differing nature of types in Nim.
 
 
 has_warning
@@ -267,7 +267,7 @@ has_warning
 
 *source line: 650*
 
-Returns true if there are any events with the ``warning`` class
+    Returns true if there are any events with the ``warning`` class
 
 
 info_msgs
@@ -279,7 +279,7 @@ info_msgs
 
 *source line: 668*
 
-Returns a sequence of messsages marked with a class of ``info``
+    Returns a sequence of messsages marked with a class of ``info``
 
 
 last_audience
@@ -291,7 +291,7 @@ last_audience
 
 *source line: 602*
 
-Gets the last event's audience
+    Gets the last event's audience
 
 
 last_class
@@ -303,7 +303,7 @@ last_class
 
 *source line: 588*
 
-Gets the last event's display class
+    Gets the last event's display class
 
 
 last_level
@@ -315,7 +315,7 @@ last_level
 
 *source line: 574*
 
-Gets the last event's logging level
+    Gets the last event's logging level
 
 
 last_msg
@@ -327,7 +327,7 @@ last_msg
 
 *source line: 616*
 
-Gets the last event's msg
+    Gets the last event's msg
 
 
 newUR_<type>
@@ -339,8 +339,8 @@ newUR_<type>
 
 *source line: 467*
 
-Create a new instance of UR_<type>. Where <type> is the data type passed
-into the ``wrap_UR`` or ``wrap_UR_detail`` macro.
+    Create a new instance of UR_<type>. Where <type> is the data type passed
+    into the ``wrap_UR`` or ``wrap_UR_detail`` macro.
 
 
 ok
@@ -352,9 +352,9 @@ ok
 
 *source line: 546*
 
-Determines whether evertink is okay, or if there are any errors
-If ``ok`` returns ``false``, then there is no expectation of a value being set.
-If ``ok`` returns ``true``, then there IS an expectation of a set value.
+    Determines whether evertink is okay, or if there are any errors
+    If ``ok`` returns ``false``, then there is no expectation of a value being set.
+    If ``ok`` returns ``true``, then there IS an expectation of a set value.
 
 
 success_msgs
@@ -366,7 +366,7 @@ success_msgs
 
 *source line: 676*
 
-Returns a sequence of messsages marked with a class of ``success``
+    Returns a sequence of messsages marked with a class of ``success``
 
 
 warning_msgs
@@ -378,7 +378,7 @@ warning_msgs
 
 *source line: 684*
 
-Returns a sequence of messsages marked with a class of ``warning``
+    Returns a sequence of messsages marked with a class of ``warning``
 
 
 set_critical_internal_bug
@@ -390,8 +390,8 @@ set_critical_internal_bug
 
 *source line: 778*
 
-Declares a failure that not only should not have happened but implies a severe problem, such as a security breach. Should be
-logged for top-priority analysis.
+    Declares a failure that not only should not have happened but implies a severe problem, such as a security breach. Should be
+    logged for top-priority analysis.
 
 
 set_debug
@@ -403,7 +403,7 @@ set_debug
 
 *source line: 840*
 
-Declares information only useful when debugging. Only seen by IT or developers.
+    Declares information only useful when debugging. Only seen by IT or developers.
 
 
 set_expected_failure
@@ -415,7 +415,7 @@ set_expected_failure
 
 *source line: 756*
 
-Declares an expected run-of-the-mill failure. Not worth logging. See defaults.
+    Declares an expected run-of-the-mill failure. Not worth logging. See defaults.
 
 
 set_expected_success
@@ -427,8 +427,8 @@ set_expected_success
 
 *source line: 733*
 
-Declares a successful but typical event. See defaults.
-Set the .value after declaring this.
+    Declares a successful but typical event. See defaults.
+    Set the .value after declaring this.
 
 
 set_failure
@@ -440,7 +440,7 @@ set_failure
 
 *source line: 745*
 
-Declares a unexpected failure. But not a bug. See defaults.
+    Declares a unexpected failure. But not a bug. See defaults.
 
 
 set_internal_bug
@@ -452,7 +452,7 @@ set_internal_bug
 
 *source line: 767*
 
-Declares a failure that should not have happened; aka "a bug". Should be logged for a developer to fix.
+    Declares a failure that should not have happened; aka "a bug". Should be logged for a developer to fix.
 
 
 set_note_to_admin
@@ -464,7 +464,7 @@ set_note_to_admin
 
 *source line: 809*
 
-Declares information that would be of interest to a user or member with admin rights
+    Declares information that would be of interest to a user or member with admin rights
 
 
 set_note_to_ops
@@ -476,7 +476,7 @@ set_note_to_ops
 
 *source line: 819*
 
-Declares information that would be of interest to IT or developers
+    Declares information that would be of interest to IT or developers
 
 
 set_note_to_public
@@ -488,7 +488,7 @@ set_note_to_public
 
 *source line: 789*
 
-Declares public information that would be of interest to the entire world
+    Declares public information that would be of interest to the entire world
 
 
 set_note_to_user
@@ -500,7 +500,7 @@ set_note_to_user
 
 *source line: 799*
 
-Declares information that would be of interest to a user or member
+    Declares information that would be of interest to a user or member
 
 
 set_success
@@ -512,8 +512,8 @@ set_success
 
 *source line: 721*
 
-Declares a successful event of note. See defaults.
-Set the .value after declaring this.
+    Declares a successful event of note. See defaults.
+    Set the .value after declaring this.
 
 
 set_warning
@@ -525,8 +525,8 @@ set_warning
 
 *source line: 829*
 
-Declares full success, but something seems odd; warrenting a warning.
-Recommend setting audience level to something appropriate.
+    Declares full success, but something seems odd; warrenting a warning.
+    Recommend setting audience level to something appropriate.
 
 
 
@@ -544,7 +544,7 @@ wrap_UR
 
 *source line: 488*
 
-Create a **UR_<n>** model and attending methods at compile-time. See main documentation.
+    Create a **UR_<n>** model and attending methods at compile-time. See main documentation.
 
 
 wrap_UR_detail
@@ -556,7 +556,7 @@ wrap_UR_detail
 
 *source line: 517*
 
-Create a **UR_<n>** model, including ``detail``, and attending methods, at compile-time. See main documentation.
+    Create a **UR_<n>** model, including ``detail``, and attending methods, at compile-time. See main documentation.
 
 
 
