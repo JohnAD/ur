@@ -336,11 +336,9 @@ Now, the entry in "test.log" will look like:
 NOTE: the ``setURLLogFormat`` procedure also works with the simpler
 ``wrap_UR``. The ``detail`` table will simply be empty.
 
-More Information
-----------------
 
-Additional references and articles:
+Table Of Contents
+=================
 
--  `module documentation: ur <docs/index-ref.rst>`__
-
-
+- `Reference for module **{{ur}}** <docs/ur-ref.rst>`__
+- `Reference for module **{{ur/log}}** <docs/ur-log-ref.rst>`__

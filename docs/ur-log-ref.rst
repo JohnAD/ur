@@ -41,10 +41,6 @@ The supplied procedure must have parameters in the form of:
 
 
 
-Macros
-======
-
-
 
 Table Of Contents
 =================

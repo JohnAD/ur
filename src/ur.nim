@@ -333,12 +333,6 @@
 ## NOTE: the ``setURLLogFormat`` procedure also works with the simpler
 ## ``wrap_UR``. The ``detail`` table will simply be empty.
 ## 
-## More Information
-## ----------------
-## 
-## Additional references and articles:
-## 
-## -  `module documentation: ur <docs/index-ref.rst>`__
 
 import
   macros,
