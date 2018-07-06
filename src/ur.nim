@@ -9,10 +9,10 @@
 ## **Table of Contents**
 ## 
 ## * `A Simple Example <#a-simple-example>`__
-## * `Library Example <#library-example>`__
+## * `Using With Logging <#using-with-logging>`__
 ## * `The UR Object <#the-ur-object>`__
 ## * `Bonus: Adding Detail <#bonus-adding-detail>`__
-## * `More Information <#more-information>`__
+## * `See also <#see-also>`__
 ## 
 ## A Simple Example
 ## ----------------
@@ -102,10 +102,10 @@
 ## 
 ##     #
 ## 
-## Library Example
-## ---------------
+## Using With Logging
+## ------------------
 ## 
-## Internally, UR has one library already integrated: Nim's standard
+## UR already has one library integrated: Nim's standard
 ## ``logging`` module. You can use it by importing 'ur/log'.
 ## 
 ## For example:
@@ -230,7 +230,7 @@
 ## The ``audience`` is, not surpisingly, the intended audience for any
 ## message about the event.
 ## 
-## In a traditional 'logger' or SYSLOG system, the intended audience is
+## In a traditional 'logging' or SYSLOG system, the intended audience is
 ## strictly ``ops``. UR allows for further targets; useful when UR is
 ## integrated with web apps or other development frameworks.
 ## 

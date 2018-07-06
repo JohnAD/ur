@@ -1,6 +1,11 @@
 Module ur
 ==============================================================================
 
+.. image:: https://raw.githubusercontent.com/yglukhov/nimble-tag/master/nimble.png
+   :height: 34
+   :width: 131
+   :alt: nimble
+
 A Universal Result (UR) is an object that allows the programmer to
 return either a value or a sequence of messages (or both) from a
 procedure. This could, of course, be done by hand using tuple or other
@@ -12,10 +17,10 @@ options, but the goal of this package is two-fold:
 **Table of Contents**
 
 * `A Simple Example <#a-simple-example>`__
-* `Library Example <#library-example>`__
+* `Using With Logging <#using-with-logging>`__
 * `The UR Object <#the-ur-object>`__
 * `Bonus: Adding Detail <#bonus-adding-detail>`__
-* `More Information <#more-information>`__
+* `See also <#see-also>`__
 
 A Simple Example
 ----------------
@@ -105,10 +110,10 @@ Now, we use the new object for returning a flexible result:
 
     #
 
-Library Example
----------------
+Using With Logging
+------------------
 
-Internally, UR has one library already integrated: Nim's standard
+UR already has one library integrated: Nim's standard
 ``logging`` module. You can use it by importing 'ur/log'.
 
 For example:
@@ -233,7 +238,7 @@ audience
 The ``audience`` is, not surpisingly, the intended audience for any
 message about the event.
 
-In a traditional 'logger' or SYSLOG system, the intended audience is
+In a traditional 'logging' or SYSLOG system, the intended audience is
 strictly ``ops``. UR allows for further targets; useful when UR is
 integrated with web apps or other development frameworks.
 

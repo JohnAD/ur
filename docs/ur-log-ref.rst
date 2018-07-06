@@ -19,7 +19,7 @@ sendLog
 
     method sendLog*(ur: UR_universal) {.base.} =
 
-*source line: 25*
+*source line: 27*
 
 Sends all events to the Nim 'logging' module.
 
@@ -31,13 +31,13 @@ setURLogFormat
 
     proc setURLogFormat*(formatting_procedure: proc) =
 
-*source line: 17*
+*source line: 18*
 
-Have the supplied procedure formated the string used by sendLog
+Have the supplied procedure format the strings used by sendLog
 
 The supplied procedure must have parameters in the form of:
 
-  (event: UREvent, detail: Table[string, string]): string
+  ``(event: UREvent, detail: Table[string, string]): string``
 
 
 
