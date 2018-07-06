@@ -36,7 +36,7 @@ we want to return.
 
 
     type
-      Vector = tuple[x: int, y: int]
+      Vector = tuple[x: float, y: float]
 
 
     wrap_UR(Vector)
@@ -70,45 +70,66 @@ Now, we use the new object for returning a flexible result:
         return
       if denominator < 0.1:
         result.set_warning("That is an awefully small denominator")
-      newVector = v
+      var newVector = v
       newVector.x = newVector.x / denominator
       result.value = newVector
       result.set_expected_success("Vector x reduced")
 
 
-    # Now lets use it.
+Now let's use it:
 
-    var a = Vector(4.0, 3.2)
+.. code:: nim
+
+    var a: Vector = (4.0, 3.2)
 
     var response = reduceXByNumber(a, 2.0)
     if response.ok:
       echo "my new x is " & $response.value.x
 
-    # should display:
-    #
-    # > my new x is 2.0
+should display:
 
+.. code::
+
+    my new x is 2.0
+
+and
+
+.. code:: nim
 
     response = reduceXByNumber(a, 0.0)
     if not response.ok:
-      echo "error messages: " & $response
+      echo "error messages: "
+      echo $response
 
-    # should display:
-    #
-    # error messages:
-    #...... TODO
+should display:
+
+.. code::
+
+    error messages:
+    UR events:  (class: danger, msg: You can't divide by zero; Ever)
+
+and
+
+.. code:: nim
 
     response = reduceXByNumber(a, 0.0001)
     if response.ok:
       echo "my new x is " & $response.value.x
-    if response.has_warnings:
-      echo "my warnings are " & $response.warnings
+    if response.has_warning:
+      echo "my warnings are " & $response.warning_msgs
 
-    # should display:
-    #
-    #.....TODO
+should display:
 
-    #
+.. code::
+
+    my new x is 40000.0
+    my warnings are @["That is an awefully small denominator"]
+
+
+In general, if a returned result is ``.ok`` then there is a ``.value``. If it is
+not ``.ok``, then there isn't and the details are in the events created.
+
+However, even ``.ok`` events can have ``success``, ``info``, and ``warning`` messages.
 
 Using With Logging
 ------------------
