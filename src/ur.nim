@@ -496,6 +496,9 @@ const
     nnkEnumTy,
     nnkObjectTy
   ]
+  STANDARD_TYPES = [
+    "string", "int", "int64", "int32", "float", "float32", "float64", "bool"
+  ]
 
 macro wrap_UR*(n: typed): typed =
   ## Create a **UR_<n>** model and attending methods at compile-time. See main documentation.
@@ -515,7 +518,8 @@ macro wrap_UR*(n: typed): typed =
       target_type = nk
 
   if target_type == nnkEmpty:
-    raise newException(FieldError, "UR does not recognize the type of $1".format(val_type))
+    if not STANDARD_TYPES.contains(val_type):
+      raise newException(FieldError, "UR does not recognize the type of $1".format(val_type))
   #
   # define the object type
   #
