@@ -11,11 +11,23 @@ options, but the goal of this package is two-fold:
 
 **Table of Contents**
 
+* `Video Introduction <#video-introduction>`__
 * `A Simple Example <#a-simple-example>`__
 * `Using With Logging <#using-with-logging>`__
 * `The UR Object <#the-ur-object>`__
 * `Bonus: Adding Detail <#bonus-adding-detail>`__
 * `See also <#see-also>`__
+
+Video Introduction
+------------------
+
+.. figure:: https://img.youtube.com/vi/HI5MBF5MTaQ/0.jpg
+    :width: 480px
+    :align: center
+    :height: 360px
+    :alt: Using UR: A Nim Library
+    :figclass: align-center
+    :target: https://youtu.be/HI5MBF5MTaQ
 
 A Simple Example
 ----------------
